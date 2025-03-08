@@ -1,5 +1,5 @@
 <?php
-require_once("../../connection/connection.php");
+require_once("../connection/connection.php");
 require_once("UserSkeleton.php");
 
 class User
@@ -28,7 +28,8 @@ class User
         if ($result->num_rows > 0) {
 
             $data = $result->fetch_assoc();
-            if (password_verify($password, $data['password'])) {
+            $hashed_input_password = hash('sha256', $password);
+            if (hash_equals($hashed_input_password, $data['password'])) {
                 $user = new UserSkeleton();
                 $user->setId($data['id']);
                 $user->setFullName($data['full_name']);
