@@ -43,6 +43,6 @@ class UserSkeleton
 
     public function setPassword($password)
     {
-        $this->password->$password;
+        $this->password = $password;
     }
 }

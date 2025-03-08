@@ -1,5 +1,5 @@
 <?php
-class QuestionSkeleton
+class QuestionSkeleton implements JsonSerializable
 {
     private $id;
     private $question;
@@ -30,5 +30,14 @@ class QuestionSkeleton
     public function setAnswer($answer)
     {
         $this->answer = $answer;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'id' => $this->id,
+            'question' => $this->question,
+            'answer' => $this->answer
+        ];
     }
 }

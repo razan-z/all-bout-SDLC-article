@@ -1,5 +1,5 @@
 <?php
-require_once("../../connection/connection.php");
+require_once("../connection/connection.php");
 require_once("UserSkeleton.php");
 
 class User
@@ -17,7 +17,7 @@ class User
         }
     }
 
-    public static function readUser($conn, $email, $password)
+    public static function readUserByEmail($conn, $email)
     {
         $query = "SELECT * FROM users WHERE email = ?";
         $stmt = $conn->prepare($query);
@@ -27,16 +27,27 @@ class User
 
         if ($result->num_rows > 0) {
 
-            $data = $result->fetch_assoc();
-            if (password_verify($password, $data['password'])) {
+            return $result->fetch_assoc();
+        } else {
+        }
+    }
+
+    public static function readUser($conn, $email, $password)
+    {
+
+        $data = self::readUserByEmail($conn, $email);
+        if ($data) {
+            $hashed_input_password = hash('sha256', $password);
+            if (hash_equals($hashed_input_password, $data['password'])) {
                 $user = new UserSkeleton();
                 $user->setId($data['id']);
                 $user->setFullName($data['full_name']);
                 $user->setEmail($data['email']);
                 $user->setPassword($data['password']);
                 return $user;
+            } else {
+                return "Wrong password";
             }
         }
-        return null;
     }
 }
