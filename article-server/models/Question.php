@@ -18,20 +18,26 @@ class Question
         }
     }
 
-    public static function readQuestions($conn)
+    public static function readQuestions($conn, $searchInput)
     {
-        $query = "SELECT * FROM questions";
+        $searchTerm = "%" . $searchInput . "%";
+        $query = "SELECT * FROM questions WHERE question LIKE ? OR answer LIKE ? ";
         $stmt = $conn->prepare($query);
+        $stmt->bind_param("ss", $searchTerm, $searchTerm);
         $stmt->execute();
         $result = $stmt->get_result();
 
-        $questions = [];
-        while ($row = $result->fetch_assoc()) {
-            $questions = new QuestionSkeleton();
-            $questions->setId($row['id']);
-            $questions->setQuestion($row['question']);
-            $questions->setAnswer($row['answer']);
+        if ($result->num_rows > 0) {
+            $questions = [];
+            while ($row = $result->fetch_assoc()) {
+                $questions = new QuestionSkeleton();
+                $questions->setId($row['id']);
+                $questions->setQuestion($row['question']);
+                $questions->setAnswer($row['answer']);
+            }
+            return $questions;
+        } else {
+            return [];
         }
-        return $questions;
     }
 }
