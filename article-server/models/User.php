@@ -17,7 +17,7 @@ class User
         }
     }
 
-    public static function readUser($conn, $email, $password)
+    public static function readUserByEmail($conn, $email)
     {
         $query = "SELECT * FROM users WHERE email = ?";
         $stmt = $conn->prepare($query);
@@ -27,7 +27,16 @@ class User
 
         if ($result->num_rows > 0) {
 
-            $data = $result->fetch_assoc();
+            return $result->fetch_assoc();
+        } else {
+        }
+    }
+
+    public static function readUser($conn, $email, $password)
+    {
+
+        $data = self::readUserByEmail($conn, $email);
+        if ($data) {
             $hashed_input_password = hash('sha256', $password);
             if (hash_equals($hashed_input_password, $data['password'])) {
                 $user = new UserSkeleton();
@@ -36,8 +45,9 @@ class User
                 $user->setEmail($data['email']);
                 $user->setPassword($data['password']);
                 return $user;
+            } else {
+                return "Wrong password";
             }
         }
-        return null;
     }
 }
