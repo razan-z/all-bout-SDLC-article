@@ -114,6 +114,7 @@ button {
 .secondary-btn:hover {
   background-color: #2998b6;
   color: white;
+  cursor: pointer;
 }
 
 i {
