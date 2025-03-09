@@ -4,7 +4,7 @@ const submitQABtn = document.getElementById("SubmitQABnt");
 const cancelBtn = document.getElementById("CancelBtn");
 
 cancelBtn.addEventListener('click', async () => {
-    window.location.href = "/article-client/home.html";
+    window.location.href = "http://localhost/all-bout-SDLC-article/article-client/home.html";
 })
 
 submitQABtn.addEventListener('click', async () => {
