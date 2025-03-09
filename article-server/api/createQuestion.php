@@ -4,7 +4,7 @@ require_once("../models/Question.php");
 
 if (empty($_POST['question']) || empty($_POST['answer'])) {
     echo json_encode([
-        "status" => "errorr",
+        "status" => "error",
         "message" => "Please fill in all fields"
     ]);
     exit();

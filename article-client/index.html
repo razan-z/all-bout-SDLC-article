@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>all bout SDLC article - Login</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="flex center column full-height full-width">
+      <div class="box flex column center">
+        <h1 class="title primary-txt">Login</h1>
+        <div class="flex column start form">
+          <label for="Email">Email:</label>
+          <input
+            type="email"
+            id="Email"
+            placeholder="email@exmple.com"
+            required
+          />
+          <label for="Password">Password:</label>
+          <input
+            type="password"
+            id="Password"
+            placeholder="password"
+            required
+          />
+        </div>
+        <button class="primary-btn" id="Login-Button">Login</button>
+        <p class="signup-login">
+          Don't have an account? <a href="signup.html">Sign up</a>
+        </p>
+      </div>
+    </div>
+    <script src="js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </body>
+</html>

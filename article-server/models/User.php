@@ -29,6 +29,7 @@ class User
 
             return $result->fetch_assoc();
         } else {
+            return false;
         }
     }
 
@@ -46,7 +47,7 @@ class User
                 $user->setPassword($data['password']);
                 return $user;
             } else {
-                return "Wrong password";
+                return false;
             }
         }
     }
