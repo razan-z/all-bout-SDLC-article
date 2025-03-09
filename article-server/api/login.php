@@ -27,11 +27,6 @@ try {
                 "password" => $user->getPassword()
             ]
         ]);
-    } else if ($user == false) {
-        echo json_encode([
-            "status" => "error",
-            "message" => "Wrong Password"
-        ]);
     } else {
         echo json_encode([
             "status" => "error",
