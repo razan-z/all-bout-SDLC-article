@@ -72,7 +72,7 @@ input {
 }
 
 .primary-btn {
-  margin-top: 20px;
+  margin: 15px 0;
   padding: 10px 20px;
   background-color: #48a6a7;
   font-weight: 700;
@@ -83,6 +83,11 @@ input {
 .primary-btn:hover {
   background-color: #4dbba8;
   cursor: pointer;
+}
+
+.signup-login {
+  font-size: small;
+  font-style: italic;
 }
 
 @media (max-width: 768px) {
