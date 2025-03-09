@@ -2,7 +2,7 @@
 require_once "../connection/connection.php";
 require_once("../models/User.php");
 
-if (!isset($_POST["email"]) || !isset($_POST["password"])) {
+if (empty($_POST["email"]) || empty($_POST["password"])) {
     echo json_encode([
         "status" => "error",
         "message" => "Email and password are required fields"
@@ -15,6 +15,7 @@ $password = $_POST["password"];
 
 try {
     $user = User::readUser($conn, $email, $password);
+
     if ($user) {
         echo json_encode([
             "status" => "success",
@@ -26,6 +27,11 @@ try {
                 "password" => $user->getPassword()
             ]
         ]);
+    } else if ($user == false) {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Wrong Password"
+        ]);
     } else {
         echo json_encode([
             "status" => "error",
@@ -36,6 +42,7 @@ try {
     http_response_code(400);
 
     echo json_encode([
+        "status" => "error",
         "message" => $e
     ]);
 }
