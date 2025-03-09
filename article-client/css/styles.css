@@ -6,7 +6,7 @@
 }
 
 .primary-txt {
-  color: #48a6a7;
+  color: #4386bb;
 }
 
 .full-height {
@@ -71,22 +71,87 @@ input {
   border-radius: 4px;
 }
 
+button {
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+}
+
 .primary-btn {
   margin: 15px 0;
   padding: 10px 20px;
-  background-color: #48a6a7;
+  background-color: #4386bb;
   font-weight: 700;
   color: white;
   border-radius: 5px;
 }
 
 .primary-btn:hover {
-  background-color: #4dbba8;
+  background-color: #2998b6;
   cursor: pointer;
 }
 
 .signup-login {
   font-size: small;
+  font-style: italic;
+}
+
+.search-bar {
+  background-color: white;
+  padding: 20px;
+  gap: 10px;
+}
+
+.search-bar > input {
+  width: 60%;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.addFAQ-btn {
+  padding: 5px;
+  background-color: white;
+  border: 2px solid #2998b6;
+  border-radius: 5px;
+}
+
+.addFAQ-btn:hover {
+  background-color: #2998b6;
+  color: white;
+}
+
+i {
+  margin-right: 10px;
+  color: #2998b6;
+  size: 20px;
+}
+
+.addFAQ-btn:hover i {
+  color: white;
+}
+
+.faq-container {
+  margin: 20px 5px;
+  padding: 20px;
+  background-color: white;
+  height: 100%;
+  gap: 10px;
+}
+
+.QA {
+  background-color: #4385bb50;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.QA > .question {
+  font-weight: bold;
+  color: #535384;
+  margin-bottom: 10px;
+}
+
+.QA > .answer {
   font-style: italic;
 }
 
