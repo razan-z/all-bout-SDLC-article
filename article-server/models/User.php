@@ -40,11 +40,7 @@ class User
         if ($data) {
             $hashed_input_password = hash('sha256', $password);
             if (hash_equals($hashed_input_password, $data['password'])) {
-                $user = new UserSkeleton();
-                $user->setId($data['id']);
-                $user->setFullName($data['full_name']);
-                $user->setEmail($data['email']);
-                $user->setPassword($data['password']);
+                $user = new UserSkeleton($data['id'], $data['full_name'], $data['email'], $data['password']);
                 return $user;
             } else {
                 return false;
