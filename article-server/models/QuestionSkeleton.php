@@ -5,6 +5,13 @@ class QuestionSkeleton implements JsonSerializable
     private $question;
     private $answer;
 
+    public function __construct($id, $question, $answer)
+    {
+        $this->id = $id;
+        $this->question = $question;
+        $this->answer = $answer;
+    }
+
     public function getId()
     {
         return $this->id;
