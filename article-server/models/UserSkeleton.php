@@ -6,6 +6,13 @@ class UserSkeleton
     private $email;
     private $password;
 
+     public function __construct($id, $fullName, $email, $password)
+    {
+        $this->id = $id;
+        $this->fullName = $fullName;
+        $this->email = $email;
+        $this->password = $password;
+    }
 
     public function getId()
     {
