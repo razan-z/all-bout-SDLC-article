@@ -30,10 +30,7 @@ class Question
         if ($result->num_rows > 0) {
             $questions = [];
             while ($row = $result->fetch_assoc()) {
-                $question = new QuestionSkeleton();
-                $question->setId($row['id']);
-                $question->setQuestion($row['question']);
-                $question->setAnswer($row['answer']);
+                $question = new QuestionSkeleton($row['id'], $row['question'], $row['answer']);
                 $questions[] = $question;
             }
             return $questions;
