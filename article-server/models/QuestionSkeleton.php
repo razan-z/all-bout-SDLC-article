@@ -14,7 +14,7 @@ class QuestionSkeleton implements JsonSerializable
         return $this->question;
     }
 
-    public function getAnwser()
+    public function getAnswer()
     {
         return $this->answer;
     }
